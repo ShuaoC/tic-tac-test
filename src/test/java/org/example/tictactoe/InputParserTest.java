@@ -1,5 +1,12 @@
 package org.example.tictactoe;
 
+import org.example.tictactoe.input.InputMoveException;
+import org.example.tictactoe.input.InputParser;
+import org.example.tictactoe.model.CellSelection;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class InputParserTest {
     /*
     * TODO - Write some tests in this file. You should test the InputParser class. Please test the following behaviors
@@ -11,4 +18,14 @@ class InputParserTest {
     *  5. If the user tries to choose a coordinate in a square that is already filled with another value, the InputParser
     *     throws an InputMoveException
     * */
+
+
+    @Test
+    void testParseInput() throws InputMoveException {
+        InputParser x = new InputParser();
+        var selection = new CellSelection(2, 1);
+        var board = new TicTacToeBoard();
+        assertEquals(selection, x.parseInput("2,1",board));
+
+    }
 }
