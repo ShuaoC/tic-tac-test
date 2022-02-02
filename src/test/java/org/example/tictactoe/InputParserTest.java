@@ -6,6 +6,7 @@ import org.example.tictactoe.model.CellSelection;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 class InputParserTest {
     /*
@@ -23,9 +24,21 @@ class InputParserTest {
     @Test
     void testParseInput() throws InputMoveException {
         InputParser x = new InputParser();
-        var selection = new CellSelection(2, 1);
         var board = new TicTacToeBoard();
-        assertEquals(selection, x.parseInput("2,1",board));
+        assertEquals(new CellSelection(2, 2), x.parseInput("2,2",board));
+    }
+
+    @Test
+    void testParseInputOutOfBound() throws InputMoveException {
+        InputParser x = new InputParser();
+        var board = new TicTacToeBoard();
+        try{
+            x.parseInput("3,2",board);
+        }catch (InputMoveException e){
+            assertEquals("One of your selections was out of bounds",e.getMessage());
+        }
 
     }
+
+
 }

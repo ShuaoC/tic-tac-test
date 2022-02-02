@@ -34,32 +34,34 @@ public class TicTacToeBoard {
         /*
          * TODO - Based on the current state of the board, is the game still ongoing, has a player won, or is there a tie?
          */
-        if(gameEnd()==true){
-            if(whoWon() == 1){
-                return GameState.X_WINS;
-            }else if(whoWon() == 2){
-                return GameState.O_WINS;
-            }else{
-                return GameState.TIE;
-            }
+        if(GameWon()!=0){
+            if(GameWon()==1);
+            else;
+        }
+        if(fullBoard() == true){
+            return GameState.TIE;
         }
 
         return GameState.ONGOING;
     }
 
     public boolean isLegalMove(CellSelection selection) {
+        /*
+        * TODO - Based on the current state of the board, is the input selection allowed? Note that this method does not
+        *  need to check that the row and column are in the right range. The InputParser is already doing that
+        * */
         if(checkGameState() == GameState.ONGOING) return true;
         return false;
     }
 
-    public boolean gameEnd(){
+    public boolean fullBoard(){
 
         return false;
     }
 
-    public int whoWon(){
+    public int GameWon(){
 
-        return 1;
+        return 0;
     }
 
 
