@@ -16,6 +16,7 @@ public class CommandLineRenderer {
         *        Check out how the BoardRendererTest JUnit test expects it to be rendered. This method should not call
         *        renderMessage or renderError. Just directly print to this.output
         * */
+
     }
 
     public void renderMessage(String message) {

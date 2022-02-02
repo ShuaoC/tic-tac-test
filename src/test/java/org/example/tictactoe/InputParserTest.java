@@ -57,4 +57,15 @@ class InputParserTest {
             assertEquals("Inputs must be numbers",e.getMessage());
         }
     }
+
+    @Test
+    void testIsEmpty() throws InputMoveException {
+        var board = new TicTacToeBoard();
+        x.parseInput("1,1",board);
+        try{
+            x.parseInput("1,1",board);
+        }catch (InputMoveException e){
+            assertEquals("That is not an allowed move",e.getMessage());
+        }
+    }
 }
