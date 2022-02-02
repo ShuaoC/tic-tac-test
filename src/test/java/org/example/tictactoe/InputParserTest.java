@@ -48,4 +48,13 @@ class InputParserTest {
         }
     }
 
+    @Test
+    void testInvalidInteger(){
+        var board = new TicTacToeBoard();
+        try{
+            x.parseInput("e,r",board);
+        }catch (InputMoveException e){
+            assertEquals("Inputs must be numbers",e.getMessage());
+        }
+    }
 }
