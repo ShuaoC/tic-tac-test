@@ -19,18 +19,16 @@ class InputParserTest {
     *  5. If the user tries to choose a coordinate in a square that is already filled with another value, the InputParser
     *     throws an InputMoveException
     * */
-
+    InputParser x = new InputParser();
 
     @Test
     void testParseInput() throws InputMoveException {
-        InputParser x = new InputParser();
         var board = new TicTacToeBoard();
         assertEquals(new CellSelection(2, 2), x.parseInput("2,2",board));
     }
 
     @Test
-    void testParseInputOutOfBound() throws InputMoveException {
-        InputParser x = new InputParser();
+    void testParseInputOutOfBound() {
         var board = new TicTacToeBoard();
         try{
             x.parseInput("3,2",board);
@@ -40,5 +38,14 @@ class InputParserTest {
 
     }
 
+    @Test
+    void testTooManyCoordinate(){
+        var board = new TicTacToeBoard();
+        try{
+            x.parseInput("1,2,1",board);
+        }catch (InputMoveException e){
+            assertEquals("Invalid number of coordinates",e.getMessage());
+        }
+    }
 
 }
