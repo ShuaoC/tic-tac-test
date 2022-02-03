@@ -6,8 +6,7 @@ import org.example.tictactoe.model.CellSelection;
 import org.example.tictactoe.model.TicTacToeCell;
 import org.junit.jupiter.api.Test;
 
-import static org.example.tictactoe.model.TicTacToeCell.O;
-import static org.example.tictactoe.model.TicTacToeCell.X;
+import static org.example.tictactoe.model.TicTacToeCell.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -70,7 +69,7 @@ class InputParserTest {
         var board = new TicTacToeBoard(new TicTacToeCell[][]{
                 {   X  ,   O  ,   X   },
                 {   X  ,   X  ,   O   },
-                {   O  ,   X  ,   O   }
+                {   O  ,   X  ,   EMPTY   }
         });
         try{
             x.parseInput("0,0",board);
