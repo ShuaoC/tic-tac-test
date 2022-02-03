@@ -3,8 +3,11 @@ package org.example.tictactoe;
 import org.example.tictactoe.input.InputMoveException;
 import org.example.tictactoe.input.InputParser;
 import org.example.tictactoe.model.CellSelection;
+import org.example.tictactoe.model.TicTacToeCell;
 import org.junit.jupiter.api.Test;
 
+import static org.example.tictactoe.model.TicTacToeCell.O;
+import static org.example.tictactoe.model.TicTacToeCell.X;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -32,6 +35,7 @@ class InputParserTest {
         var board = new TicTacToeBoard();
         try{
             x.parseInput("3,2",board);
+            fail();
         }catch (InputMoveException e){
             assertEquals("One of your selections was out of bounds",e.getMessage());
         }
@@ -43,9 +47,11 @@ class InputParserTest {
         var board = new TicTacToeBoard();
         try{
             x.parseInput("1,2,1",board);
-        }catch (InputMoveException e){
-            assertEquals("Invalid number of coordinates",e.getMessage());
+            fail();
+        }catch (InputMoveException e) {
+            assertEquals("Invalid number of coordinates", e.getMessage());
         }
+
     }
 
     @Test
@@ -53,6 +59,7 @@ class InputParserTest {
         var board = new TicTacToeBoard();
         try{
             x.parseInput("e,r",board);
+            fail();
         }catch (InputMoveException e){
             assertEquals("Inputs must be numbers",e.getMessage());
         }
@@ -60,10 +67,14 @@ class InputParserTest {
 
     @Test
     void testIsEmpty() throws InputMoveException {
-        var board = new TicTacToeBoard();
-        x.parseInput("1,1",board);
+        var board = new TicTacToeBoard(new TicTacToeCell[][]{
+                {   X  ,   O  ,   X   },
+                {   X  ,   X  ,   O   },
+                {   O  ,   X  ,   O   }
+        });
         try{
-            x.parseInput("1,1",board);
+            x.parseInput("0,0",board);
+            fail();
         }catch (InputMoveException e){
             assertEquals("That is not an allowed move",e.getMessage());
         }
